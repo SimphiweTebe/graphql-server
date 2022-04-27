@@ -11,9 +11,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 const { ApolloServer } = require('apollo-server-express');
 const { ApolloServerPluginLandingPageGraphQLPlayground } = require('apollo-server-core');
 const express = require('express');
+const cors = require('cors');
+const app = express();
+app.use(cors());
 const typeDefs = require('./Schema/TypeDefs');
 const resolvers = require('./Schema/Resolvers');
-const app = express();
 const server = new ApolloServer({ typeDefs, resolvers });
 const start = () => __awaiter(void 0, void 0, void 0, function* () {
     yield server.start();

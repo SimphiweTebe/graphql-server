@@ -4,13 +4,10 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 
-//Middleware
-app.use(cors())
-
+app.use(cors({ origin: '*' }))
 
 const typeDefs = require('./Schema/TypeDefs');
 const resolvers = require('./Schema/Resolvers');
-
 
 const server = new ApolloServer({ typeDefs, resolvers });
 
