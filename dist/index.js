@@ -20,6 +20,10 @@ const start = () => __awaiter(void 0, void 0, void 0, function* () {
     server.applyMiddleware({ app });
 });
 start();
+//fix heroku get error
+app.get('/', (req, res) => {
+    res.send('Hello world!');
+});
 app.listen({ port: 5000 }, () => {
-    console.log('Server running on 5000');
+    console.log('Server running on port 5000');
 });
