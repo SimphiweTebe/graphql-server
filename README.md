@@ -1,5 +1,5 @@
 # GraphQL server built with Apollo and Typescript
-A graphQL server that uses the Starwars API as datasource.
+A graphQL server that uses the Starwars API as datasource to fetch characters.
 
 
 ## Running the backend
