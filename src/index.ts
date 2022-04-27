@@ -9,7 +9,7 @@ app.use(cors({ origin: '*' }))
 const typeDefs = require('./Schema/TypeDefs');
 const resolvers = require('./Schema/Resolvers');
 
-const server = new ApolloServer({ typeDefs, resolvers, introspection: true, plugin: [ApolloServerPluginLandingPageGraphQLPlayground] });
+const server = new ApolloServer({ typeDefs, resolvers, introspection: true, plugins: [ApolloServerPluginLandingPageGraphQLPlayground] });
 
 const start = async ()=> {
     await server.start()
