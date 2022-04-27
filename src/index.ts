@@ -6,7 +6,7 @@ const typeDefs = require('./Schema/TypeDefs');
 const resolvers = require('./Schema/Resolvers');
 
 const app = express();
-const server = new ApolloServer({ typeDefs, resolvers, plugins: [ApolloServerPluginLandingPageGraphQLPlayground] });
+const server = new ApolloServer({ typeDefs, resolvers});
 
 const start = async ()=> {
     await server.start()
