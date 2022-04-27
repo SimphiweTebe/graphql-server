@@ -14,10 +14,10 @@ const express = require('express');
 const typeDefs = require('./Schema/TypeDefs');
 const resolvers = require('./Schema/Resolvers');
 const app = express();
-const server = new ApolloServer({ typeDefs, resolvers, plugins: [ApolloServerPluginLandingPageGraphQLPlayground] });
+const server = new ApolloServer({ typeDefs, resolvers });
 const start = () => __awaiter(void 0, void 0, void 0, function* () {
     yield server.start();
-    server.applyMiddleware({ app, path: "/" });
+    server.applyMiddleware({ app, path: "/api" });
     app.listen({ port: process.env.PORT || 5000 }, () => {
         console.log('Server running on port 5000');
     });

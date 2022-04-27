@@ -1,11 +1,17 @@
 const { ApolloServer } = require('apollo-server-express');
 const { ApolloServerPluginLandingPageGraphQLPlayground } = require('apollo-server-core');
 const express = require('express');
+const cors = require('cors');
+const app = express();
+
+//Middleware
+app.use(cors())
+
 
 const typeDefs = require('./Schema/TypeDefs');
 const resolvers = require('./Schema/Resolvers');
 
-const app = express();
+
 const server = new ApolloServer({ typeDefs, resolvers });
 
 const start = async ()=> {
