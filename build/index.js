@@ -14,7 +14,7 @@ const express = require('express');
 const typeDefs = require('./Schema/TypeDefs');
 const resolvers = require('./Schema/Resolvers');
 const app = express();
-const server = new ApolloServer({ typeDefs, resolvers });
+const server = new ApolloServer({ typeDefs, resolvers, plugins: [ApolloServerPluginLandingPageGraphQLPlayground] });
 const start = () => __awaiter(void 0, void 0, void 0, function* () {
     yield server.start();
     server.applyMiddleware({ app, path: "/" });
