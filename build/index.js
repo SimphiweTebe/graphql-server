@@ -17,7 +17,7 @@ const app = express();
 const server = new ApolloServer({ typeDefs, resolvers, plugins: [ApolloServerPluginLandingPageGraphQLPlayground] });
 const start = () => __awaiter(void 0, void 0, void 0, function* () {
     yield server.start();
-    server.applyMiddleware({ app });
+    server.applyMiddleware({ app, path: "/" });
     app.listen({ port: process.env.PORT || 5000 }, () => {
         console.log('Server running on port 5000');
     });

@@ -10,7 +10,7 @@ const server = new ApolloServer({ typeDefs, resolvers, plugins: [ApolloServerPlu
 
 const start = async ()=> {
     await server.start()
-    server.applyMiddleware({ app });
+    server.applyMiddleware({ app, path: "/" });
     app.listen({ port: process.env.PORT || 5000 }, ()=>{
         console.log('Server running on port 5000');
     });
