@@ -9,13 +9,18 @@ app.use(cors({ origin: '*' }))
 const typeDefs = require('./Schema/TypeDefs');
 const resolvers = require('./Schema/Resolvers');
 
-const server = new ApolloServer({ typeDefs, resolvers, introspection: true, plugins: [ApolloServerPluginLandingPageGraphQLPlayground] });
+const server = new ApolloServer({ 
+    typeDefs, resolvers, 
+    introspection: true, 
+    plugins: [ApolloServerPluginLandingPageGraphQLPlayground] 
+});
 
-const start = async ()=> {
-    await server.start()
-    server.applyMiddleware({ app, path: "/api" });
-    app.listen({ port: process.env.PORT || 5000 }, ()=>{
-        console.log('Server running on port 5000');
-    });
-}
-start();
+(
+    async function() {
+        await server.start()
+        server.applyMiddleware({ app, path: "/api" });
+        app.listen({ port: process.env.PORT || 5000 }, ()=>{
+            console.log('Server running on port 5000');
+        });
+    }
+)();

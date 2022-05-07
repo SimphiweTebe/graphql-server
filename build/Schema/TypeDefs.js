@@ -11,16 +11,28 @@ const peopleTypeDefs = gql `
     }
 
     type People {
+        count: Int
         next: String
         previous: String 
         results: [Person!]
     }
 
+    type Home {
+        name: String
+        population: String
+        diameter: String
+        gravity: String
+        terrain: String
+        rotation_period: String
+        orbital_period: String
+    }
+
     #Queries
 
     type Query {
-        getPeople: People
-        getPerson(name: String!): Person    
+        people(page: Int!): People
+        person(name: String!): Person
+        home(url: String!): Home    
     }
 `;
 module.exports = peopleTypeDefs;

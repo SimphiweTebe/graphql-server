@@ -13,10 +13,10 @@ const { ApolloServerPluginLandingPageGraphQLPlayground } = require('apollo-serve
 const express = require('express');
 const cors = require('cors');
 const app = express();
-app.use(cors());
+app.use(cors({ origin: '*' }));
 const typeDefs = require('./Schema/TypeDefs');
 const resolvers = require('./Schema/Resolvers');
-const server = new ApolloServer({ typeDefs, resolvers });
+const server = new ApolloServer({ typeDefs, resolvers, introspection: true, plugins: [ApolloServerPluginLandingPageGraphQLPlayground] });
 const start = () => __awaiter(void 0, void 0, void 0, function* () {
     yield server.start();
     server.applyMiddleware({ app, path: "/api" });

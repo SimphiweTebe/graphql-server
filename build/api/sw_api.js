@@ -9,9 +9,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 const axios = require('axios');
-const SW_API_PEOPLE = () => __awaiter(void 0, void 0, void 0, function* () {
+const SW_API_PEOPLE = (page) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { data } = yield axios.get(`https://swapi.dev/api/people`);
+        const { data } = yield axios.get(`https://swapi.dev/api/people?page=${page}`);
         return data;
     }
     catch (error) {
@@ -27,4 +27,13 @@ const SW_API_SEARCH = (name) => __awaiter(void 0, void 0, void 0, function* () {
         console.log(error);
     }
 });
-module.exports = { SW_API_PEOPLE, SW_API_SEARCH };
+const SW_API_HOME = (url) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { data } = yield axios.get(`${url}`);
+        return data;
+    }
+    catch (error) {
+        console.log(error);
+    }
+});
+module.exports = { SW_API_PEOPLE, SW_API_SEARCH, SW_API_HOME };

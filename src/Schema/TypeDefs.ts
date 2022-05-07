@@ -4,23 +4,25 @@ const peopleTypeDefs = gql`
 
     type Person {
         name: String!
-        height: String
-        mass: String
-        gender: String
-        homeworld: String
+        height: String!
+        mass: String!
+        gender: String!
+        homeworld: String!
     }
 
     type People {
+        count: Int
         next: String
         previous: String 
-        results: [Person!]
+        results: [Person!]!
     }
 
     #Queries
 
     type Query {
-        getPeople: People
-        getPerson(name: String!): Person    
+        people: People
+        page_people(page: String!): People
+        search_people(name: String!): Person
     }
 `;
 
